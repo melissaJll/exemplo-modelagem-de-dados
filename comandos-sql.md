@@ -4,8 +4,10 @@
 
 ### Criar Banco de Dados
 
+```SQL
 CREATE DATABASE vendas CHARACTER SET utf8mb4;
 USE DATABASE vendas;
+```
 
 ### Criar tabela de fabricantes
 
