@@ -1,80 +1,30 @@
-# Comandos SQL - Referências 
-
-## Modelagem Física com comandos DLL
-
-### Criar Banco de Dados
+# Comandos
 
 ```SQL
-CREATE DATABASE vendas CHARACTER SET utf8mb4;
-USE DATABASE vendas;
+CREATE DATABASE catalogo_filmes CHARACTER SET utf8mb4;
+USE DATABASE catalogo_filmes;
+```
+```SQL
+DESC filmes;
 ```
 
-### Criar tabela de fabricantes
+### Criar tabelas
 
 ```SQL
-CREATE TABLE fabricantes(
+CREATE TABLE generos(
     id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nomeFabricante VARCHAR(45) NOT NULL
+    nomeGenero VARCHAR(45) NOT NULL
+
+);
+
+--DROP TABLE filmes;
+
+CREATE TABLE filmes(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nomeFilme VARCHAR(45) NOT NULL,
+    anoLancamento YEAR,
+    idGenero INT,
+    CONSTRAINT fk_generos_filmes FOREIGN KEY (idGenero)
+	REFERENCES generos(id)
 );
 ```
-
-### Vizualizar detalhes estruturais da tabela
-
-```SQL
-DESC fabricantes;
-```
-
-### Criar tabela de produtos
-
-```SQL
-CREATE TABLE produtos(
-    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    nomeProduto VARCHAR(45) NOT NULL,
-    descricao TEXT(500),
-    preco DECIMAL(6,2),
-    idFabricante INT NOT NULL
-);
-```
-### Criação do relacionamento entre as tabelas FOREIGN KEY
-```SQL
-ALTER TABLE produtos
-    -- CONSTRAINT = Restrição que indica um relacionamento
-    ADD CONSTRAINT fk_produtos_fabricantes FOREIGN KEY (idFabricante)
-	REFERENCES fabricantes(id)
-;
-```
-
-```SQL
-```
-### Exemplos de alterações estruturais na tabela
-#### Renomear tabela
-
-```SQL
-ALTER TABLE produtos RENAME TO produtos;
-```
-
-#### Novo tipo de dado
-```SQL
-ALTER TABLE table_name 
-    MODIFY COLUMN preco INT NOT NULL;
-
-ALTER TABLE table_name 
-    MODIFY COLUMN preco DECIMAL(6,2) NOT NULL;
-```
-
-### Renomear colunas
-
-```SQL
-ALTER TABLE table_name 
-    RENAME COLUMN old_name TO new_column_name VARCHAR(45) NOT NULL;
-
-    ou
-
-ALTER TABLE table_name 
-    CHANGE old_name new_column_name VARCHAR(45) NOT NULL;
-```
-
-### Adicionar colunas
-
-
-
