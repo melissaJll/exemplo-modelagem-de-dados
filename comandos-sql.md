@@ -17,3 +17,23 @@ CREATE TABLE fabricantes(
     nomeFabricante VARCHAR(45) NOT NULL
 );
 ```
+
+### Vizualizar detalhes estruturais da tabela
+
+```SQL
+DESC fabricantes;
+```
+
+### Criar tabela de produtos
+
+```SQL
+CREATE TABLE produtos(
+    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    nomeProduto VARCHAR(45) NOT NULL,
+    descricao TEXT(500),
+    preco DECIMAL(6,2),
+    idFabricante INT NOT NULL
+);
+```
+
+
