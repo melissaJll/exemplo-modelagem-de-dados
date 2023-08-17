@@ -80,3 +80,16 @@ SELECT nomeProduto, preco FROM `produtos` WHERE idFabricante NOT IN(3,5);
 OU
 SELECT nomeProduto, preco FROM `produtos` NOT WHERE idFabricante IN(3,5); 
 ```
+
+####
+<!-- UPDATE table_name SET nomeColuna = new_value WHERE id = 1-->
+
+```sql
+UPDATE fabricantes SET nomeFabricantes = 'Asus do Brasil' WHERE id = 1;
+
+UPDATE produtos SET preco = 6549.74 WHERE id = 4;
+
+UPDATE produtos SET preco = 6549.74 WHERE id = 4;
+
+UPDATE produtos SET quantidade = 20 WHERE idFabricante IN(3,5);
+```
