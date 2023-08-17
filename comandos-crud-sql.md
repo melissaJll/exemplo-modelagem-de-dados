@@ -115,3 +115,37 @@ DELETE FROM fabricantes WHERE id = 4;
 -- A restrição da chave estrangeira impede o efeito cascada
 DELETE FROM fabricantes WHERE id = 3;
 ```
+
+
+### Operações e funções de agregação
+
+```sql
+SELECT SUM(preco) as Total FROM produtos;
+SELECT AVG(preco) as 'Média' FROM produtos;
+
+-- FUNÇÃO para Arredondar decimais
+-- ocorre de dentro para fora
+SELECT ROUND(AVG(preco), 2) as 'Média' FROM produtos;
+
+SELECT COUNT(id) as 'Nº de produtos' FROM produtos;
+
+-- 'Nº de fabricantes na tabela produtos' idFabricante
+-- Evita a duplicidade na contagem de fabricantes
+SELECT COUNT(DISTINCT idFabricante) as 'Nº de fabricantes' FROM produtos;
+```
+
+
+### Operações Matemáticas
+<!-- Coluna vitual(x*y) -->
+```sql
+SELECT nomeProduto, preco, quantidade, (preco * quantidade) as 'Valor Total' FROM produtos;
+```
+
+
+### Segmentação ou Agrupamento de dados
+<!-- GROUP BY -->
+```sql
+
+SELECT nomeProduto, idFabricante, SUM(preco) FROM produtos GROUP BY idFabricante;
+
+```
