@@ -55,7 +55,14 @@ SELECT nomeProduto, preco FROM `produtos` WHERE preco >= 2000 AND preco <= 6000;
 
 SELECT nomeProduto, preco FROM `produtos` WHERE preco > 5000 AND preco <= 6000;
 
+-- ORDER BY
+-- Deve ser por último ORDER BY
+SELECT nomeProduto, preco FROM produtos ORDER BY nome;
+SELECT nomeProduto, preco FROM produtos ORDER BY preco desc;
+
 ```
+
+
 
 #### OR
 ```sql
@@ -81,7 +88,7 @@ OU
 SELECT nomeProduto, preco FROM `produtos` NOT WHERE idFabricante IN(3,5); 
 ```
 
-####
+#### UPDATE
 <!-- UPDATE table_name SET nomeColuna = new_value WHERE id = 1-->
 
 ```sql
@@ -92,4 +99,13 @@ UPDATE produtos SET preco = 6549.74 WHERE id = 4;
 UPDATE produtos SET preco = 6549.74 WHERE id = 4;
 
 UPDATE produtos SET quantidade = 20 WHERE idFabricante IN(3,5);
+```
+
+#### DELETE
+<!-- DELETE from tbl_autores WHERE IdAutor = 19;-->
+```sql
+DELETE FROM fabricantes WHERE id = 1;
+DELETE FROM fabricantes WHERE id = 4;
+-- A restrição da chave estrangeira impede o efeito cascada
+DELETE FROM fabricantes WHERE id = 3;
 ```
