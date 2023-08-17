@@ -60,6 +60,12 @@ SELECT nomeProduto, preco FROM `produtos` WHERE preco > 5000 AND preco <= 6000;
 SELECT nomeProduto, preco FROM produtos ORDER BY nome;
 SELECT nomeProduto, preco FROM produtos ORDER BY preco desc;
 
+-- Busca por Palavra em qualquer posição
+-- Busca por letra inicial
+SELECT nomeProduto, descricao FROM produtos WHERE descricao LIKE '%tablet%' OR nomeProduto LIKE 'u%';
+-- '%sistema' a palavra está no fim
+-- 'sistema%' a palavra está no inicio
+-- % significa qualquer texto
 ```
 
 
