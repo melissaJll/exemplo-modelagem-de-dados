@@ -40,6 +40,7 @@ INSERT INTO produtos(nomeProduto, descricao, preco, quantidade, idFabricante) VA
 <!--SELECT coluna_Name FROM table_name; -->
 
 ```sql
+
 SELECT * FROM produtos;
 SELECT nomeProduto FROM produtos;
 SELECT nomeProduto, preco, quantidade FROM produtos WHERE preco < 5000 ;
@@ -47,9 +48,35 @@ SELECT nomeProduto, preco, quantidade FROM produtos WHERE preco < 5000 ;
 SELECT nomeProduto, descricao FROM produtos WHERE idFabricante = 3 ;
 ```
 ### Operadores lógicos: AND, OR NOT
+#### AND
 
 ```sql
 SELECT nomeProduto, preco FROM `produtos` WHERE preco >= 2000 AND preco <= 6000;
 
 SELECT nomeProduto, preco FROM `produtos` WHERE preco > 5000 AND preco <= 6000;
+
+```
+
+#### OR
+```sql
+SELECT nomeProduto, preco FROM `produtos` WHERE preco > 5000 OR preco <= 3000;
+
+SELECT nomeProduto, preco FROM `produtos` WHERE idFabricante = 3 OR idFabricante = 5; 
+
+-- Conteudo Novo Usando FUNÇÃO IN
+SELECT nomeProduto, preco FROM `produtos` WHERE idFabricante IN(3,5); 
+```
+
+
+#### NOT
+
+```sql
+SELECT nomeProduto, descricao, preco FROM `produtos` WHERE NOT idFabricante = 8;
+
+SELECT nomeProduto, descricao, preco FROM `produtos` WHERE idFabricante != 8;
+
+-- Conteudo Novo Usando FUNÇÃO IN
+SELECT nomeProduto, preco FROM `produtos` WHERE idFabricante NOT IN(3,5); 
+OU
+SELECT nomeProduto, preco FROM `produtos` NOT WHERE idFabricante IN(3,5); 
 ```
