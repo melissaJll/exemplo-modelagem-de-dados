@@ -47,6 +47,9 @@ SELECT nomeProduto, preco, quantidade FROM produtos WHERE preco < 5000 ;
 
 SELECT nomeProduto, descricao FROM produtos WHERE idFabricante = 3 ;
 ```
+
+
+
 ### Operadores lógicos: AND, OR NOT
 #### AND
 
@@ -54,6 +57,7 @@ SELECT nomeProduto, descricao FROM produtos WHERE idFabricante = 3 ;
 SELECT nomeProduto, preco FROM `produtos` WHERE preco >= 2000 AND preco <= 6000;
 
 SELECT nomeProduto, preco FROM `produtos` WHERE preco > 5000 AND preco <= 6000;
+
 
 -- ORDER BY
 -- Deve ser por último ORDER BY
@@ -94,6 +98,8 @@ OU
 SELECT nomeProduto, preco FROM `produtos` NOT WHERE idFabricante IN(3,5); 
 ```
 
+
+
 #### UPDATE
 <!-- UPDATE table_name SET nomeColuna = new_value WHERE id = 1-->
 
@@ -107,6 +113,7 @@ UPDATE produtos SET preco = 6549.74 WHERE id = 4;
 UPDATE produtos SET quantidade = 20 WHERE idFabricante IN(3,5);
 ```
 
+
 #### DELETE
 <!-- DELETE from tbl_autores WHERE IdAutor = 19;-->
 ```sql
@@ -115,6 +122,7 @@ DELETE FROM fabricantes WHERE id = 4;
 -- A restrição da chave estrangeira impede o efeito cascada
 DELETE FROM fabricantes WHERE id = 3;
 ```
+
 
 
 ### Operações e funções de agregação
@@ -135,11 +143,13 @@ SELECT COUNT(DISTINCT idFabricante) as 'Nº de fabricantes' FROM produtos;
 ```
 
 
+
 ### Operações Matemáticas
 <!-- Coluna vitual(x*y) -->
 ```sql
 SELECT nomeProduto, preco, quantidade, (preco * quantidade) as 'Valor Total' FROM produtos;
 ```
+
 
 
 ### Segmentação ou Agrupamento de dados
@@ -149,3 +159,33 @@ SELECT nomeProduto, preco, quantidade, (preco * quantidade) as 'Valor Total' FRO
 SELECT nomeProduto, idFabricante, SUM(preco) FROM produtos GROUP BY idFabricante;
 
 ```
+
+
+## Consultas/ Queries em duas ou mais tabelas relacionadas (Junção/Join)
+
+### Exibir nome do Fabricante do produto
+
+```sql
+SELECT produtos.nomeProduto, fabricantes.nomeFabricante 
+FROM produtos INNER JOIN fabricantes
+    ON produtos.idFabricante = fabricantes.id;
+```
+
+### Exibir nome do Fabricante do produto, em ordem alfabetica
+```sql
+SELECT produtos.nomeProduto as Produto, fabricantes.nomeFabricante Fabricante
+FROM produtos INNER JOIN fabricantes
+    ON produtos.idFabricante = fabricantes.id ORDER BY Produto;
+```
+
+### Fabricante, soma dos precos e quantidade de produtos
+```sql
+SELECT nomeFabricante Fabricante, SUM(produtos.preco) Total, COUNT(produtos.idFabricante) 'Quantidade de Produtos'
+FROM produtos INNER JOIN fabricantes
+    ON produtos.idFabricante = fabricantes.id 
+    GROUP BY fabricantes.nomeFabricante;
+
+
+    
+```
+
