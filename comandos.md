@@ -1,6 +1,6 @@
 ```SQL
 CREATE DATABASE tecinternet_escola_melissa CHARACTER SET utf8mb4;
-USE DATABASE tecinternet_escola_melissa;
+--USE DATABASE tecinternet_escola_melissa;
 
 
 CREATE TABLE cursos(
@@ -15,14 +15,15 @@ CREATE TABLE professores(
     nome VARCHAR(50) NOT NULL,
     areaAtuacao VARCHAR(35) NOT NULL,
     curso_id TINYINT NOT NULL
+    --  ,cursos_professores_id TINYINT NOT NULL
 );
 
 CREATE TABLE alunos(
 	id TINYINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     nome VARCHAR(50) NOT NULL,
     dataNascimento DATE NOT NULL,
-    primeiraNota DECIMAL(4,2),
-    segundaNota DECIMAL(4,2),
+    primeiraNota DECIMAL(4,2) NOT NULL,
+    segundaNota DECIMAL(4,2) NOT NULL,
     curso_id TINYINT NOT NULL
 );
 
