@@ -184,8 +184,20 @@ SELECT nomeFabricante Fabricante, SUM(produtos.preco) Total, COUNT(produtos.idFa
 FROM produtos INNER JOIN fabricantes
     ON produtos.idFabricante = fabricantes.id 
     GROUP BY fabricantes.nomeFabricante;
+```
 
+### Trazer a quantidade de produtos por fabricante e a soma das quantidades, SOMENTE dos fabricantes que possuem produtos cadastrados
+```sql
+SELECT nomeFabricante Fabricante, COUNT(produtos.id) 'Quantidade de Produtos', SUM(quantidade) Estoque
+FROM produtos INNER JOIN fabricantes
+    ON produtos.idFabricante = fabricantes.id GROUP BY fabricantes.nomeFabricante;
+```
 
-    
+### Trazer a quantidade de produtos por fabricante e a soma das quantidades, mesmo dos fabricantes sem produtos cadastrados
+<!-- fabricantes está a direita = RIGHT -->
+```sql
+SELECT nomeFabricante Fabricante, COUNT(produtos.id) 'Quantidade de Produtos', SUM(quantidade) Estoque
+FROM produtos RIGHT JOIN fabricantes
+    ON produtos.idFabricante = fabricantes.id GROUP BY fabricantes.nomeFabricante;
 ```
 
